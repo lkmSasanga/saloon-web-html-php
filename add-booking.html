@@ -16,7 +16,7 @@
       <form class="form">
         <div class="form-input">
           <label for="service">Choose your need </label>
-          <select name="service" id="service" required>
+          <select name="service" id="service" class="select" required>
             <option value="Haircut">Haircut</option>
             <option value="Styling">Styling</option>
             <option value="Hairdryer">Hairdryer</option>
@@ -29,7 +29,7 @@
 
         <div class="form-input">
           <label for="day">Month</label>
-          <select name="month" id="month" required>
+          <select name="month" id="month" class="select" required>
             <option value="January">January</option>
             <option value="February">February</option>
             <option value="March">March</option>
@@ -48,7 +48,7 @@
 
         <div class="form-input">
           <label for="day">Day</label>
-          <select name="day" id="day" required>
+          <select name="day" id="day" class="select" required>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -93,14 +93,16 @@
             max="18:00"
             required
           /> -->
-          <select name="time" id="time" required>
+          <select name="time" id="time" class="select" required>
             <option value="09:00 AM">09:00 AM</option>
             <option value="12:00 PM">12:00 PM</option>
             <option value="03:00 PM">03:00 PM</option>
             <option value="06:00 PM">06:00 PM</option>
           </select>
         </div>
-        <input id="book-now" value="Book Now" class="btn-book" />
+        <div class="btnContainer">
+          <input id="book-now" value="Book Now" class="btn-book" />
+        </div>
       </form>
     </section>
     <script>
@@ -108,7 +110,7 @@
         $("#book-now").on("click", function () {
           console.log("book now clicked");
           console.log("book now clicked");
-          let email = "email"
+          let email = "email";
           // if(localStorage.getItem('email')) {
           //   email = localStorage.getItem('email')
           // } else {
