@@ -1,58 +1,57 @@
-
-body{
-	margin: 0 auto;
-	background-repeat: no-repeat;
-	background-size: 100% 720px;
+body {
+  margin: 0 auto;
+  background-repeat: no-repeat;
+  background-size: 100% 720px;
 }
 
-.container{
-	width: 500px;
-	height: 450px;
-	text-align: center;
-	margin: 0 auto;
-	background-color: rgba(13, 28, 141, 0.7);
-	margin-top: 160px;
-    border-radius: 10px;
+.container {
+  width: 500px;
+  height: 450px;
+  text-align: center;
+  margin: 0 auto;
+  background-color: rgba(7, 1, 38, 0.7);
+  margin-top: 160px;
+  border-radius: 10px;
 }
 
-.container img{
-	width: 150px;
-	height: 150px;
-	margin-top: -60px;
+.login {
+  color: white;
+  font-size: 40px;
+  letter-spacing: 2px;
 }
 
-input[type="text"],input[type="password"]{
-	margin-top: 30px;
-	height: 45px;
-	width: 300px;
-	font-size: 18px;
-	margin-bottom: 20px;
-	background-color: #fff;
-	padding-left: 40px;
+input[type="text"],
+input[type="password"] {
+  margin-top: 30px;
+  height: 45px;
+  width: 300px;
+  font-size: 18px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  padding-left: 40px;
+  border-radius: 7px;
 }
 
-.form-input::before{
-	content: "\f007";
-	font-family: "FontAwesome";
-	padding-left: 07px;
-	padding-top: 40px;
-	position: absolute;
-	font-size: 35px;
-	color: #2980b9; 
+.form-input::before {
+  padding-left: 07px;
+  padding-top: 40px;
+  position: absolute;
+  font-size: 35px;
+  color: #2980b9;
 }
 
-.form-input:nth-child(2)::before{
-	content: "\f023";
-}
+/* .form-input:nth-child(2)::before{
+} */
 
-.btn-login{
-	padding: 25px 25px;
-	border: none;
-	background-color: #00ae48;
-	color: #fff;
-    border-radius: 10px;
-    width: 150px;
-    margin-top: 40px;
-    cursor: pointer;
+.btn-login {
+  padding: 25px 25px;
+  border: none;
+  background-color: #00ae48;
+  color: #fff;
+  border-radius: 10px;
+  width: 150px;
+  margin-top: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
-
