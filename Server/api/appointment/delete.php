@@ -18,7 +18,7 @@
     $item->id = $data->id;
     
     if($item->deleteAppointment()){
-        echo json_encode("Employee deleted.");
+        echo json_encode("Appointment deleted.");
     } else{
         echo json_encode("Data could not be deleted");
     }
