@@ -9,13 +9,12 @@
 }
 
 .form {
-  align-items: left !important;
   border: 1px solid;
   padding: 40px;
-  margin:70px 350px;
+  margin:70px auto;
+  width: 300px;
 }
 .form-input {
-  align-items: left !important;
   font-size: 18px;
 }
 .form-input label{
