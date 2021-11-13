@@ -1,0 +1,77 @@
+.body {
+  justify-content: center;
+  text-align: center;
+  margin: 5px auto;
+}
+.title {
+  font-weight: 700;
+  font-size: 40px;
+}
+
+.form {
+  margin-top: 60px;
+}
+.form-input {
+  border: 1px solid;
+  padding: 40px;
+  margin: 20px auto;
+  width: 500px;
+  /* align-items: left !important; */
+  font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: center;
+}
+.form-input label {
+  margin-right: 25px;
+  margin-left: 25px;
+  justify-content: center;
+  text-align: center;
+}
+
+.item-name {
+  font-weight: 800;
+  /* background-color: rgb(9, 9, 99); */
+  /* padding: 12px; */
+  /* border-radius: 5px; */
+  /* color: white; */
+  /* margin-top: -10px;  */
+}
+
+.btn-dec {
+  padding: 0px 25px 0px 25px;
+  padding-bottom: -15px;
+  border: none;
+  background-color: #fff;
+  color: #dc0841;
+  /* width: 40px; */
+  /* height: 40px; */
+  /* margin-top: -10px; */
+  /* margin-bottom: -20px;
+  margin-right: 25px;
+  margin-left: 25px; */
+  margin: 0 -30px 5px 0px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 40px;
+  /* border-radius: 50%; */
+  /* letter-spacing: 2px; */
+}
+
+.btn-inc {
+  padding: 3px 15px 0px 25px;
+  border: none;
+  background-color: #fff;
+  color: #00ae48;
+  width: 60px;
+  height: 60px;
+  margin-top: -10px;
+  margin-bottom: -10px;
+  margin-right: 25px;
+  margin-left: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 40px;
+  /* border-radius: 50%; */
+}
