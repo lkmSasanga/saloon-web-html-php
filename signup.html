@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Beauty Lab | Sign up</title>
+    <link rel="stylesheet" a href="signUp.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <br />
+      <h1 class="login">Sign Up</h1>
+      <form>
+        <div class="form-input">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter the Name"
+          />
+        </div>
+        <div class="form-input">
+          <input
+            type="text"
+            name="email"
+            id="email"
+            placeholder="Enter the Email address"
+          />
+        </div>
+        <div class="form-input">
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            id="password"
+          />
+        </div>
+        <input value="SIGN UP" class="btn-login" id="btn-signup" />
+      </form>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#btn-signup").on("click", function () {
+          console.log("sign up");
+          var email = $("#email").val();
+          var password = $("#password").val();
+          var name = $("#name").val();
+          console.log(email + " " + password + " " + name);
+
+          if (email != "" && password != "" && name != "") {
+            var postData = {
+              name: name,
+              password: password,
+              email: email,
+              role: "client",
+            };
+
+            console.log("send request");
+            $.ajax({
+              url: "http://localhost:8080/api/client/create.php",
+              type: "POST",
+              data: JSON.stringify(postData),
+              contentType: "application/json; charset=utf-8",
+              success: function (response, xhr) {
+                console.log("response recived" + response);
+                console.log(xhr);
+                var response = response;
+                if (response) {
+                  console.log(response);
+                } else {
+                  alert("Sign up failed");
+                }
+              },
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

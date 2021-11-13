@@ -22,8 +22,10 @@
     $item->created = date('Y-m-d H:i:s');
     
     if($item->createClient()){
-        echo 'Employee created successfully.';
+        http_response_code(200);
+        echo json_encode('Employee created successfully.');
     } else{
-        echo 'Employee could not be created.';
+        http_response_code(404);
+        echo json_encode('Employee could not be created.');
     }
 ?>
