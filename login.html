@@ -36,6 +36,7 @@
           console.log("login");
           var email = $("#email").val();
           var password = $("#password").val();
+          localStorage.setItem('email', email);
           console.log(email + " " + password);
 
           if (email != "" && password != "") {

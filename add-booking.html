@@ -6,16 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beauty Lab | Home</title>
     <link rel="stylesheet" a href="add-booking.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body class="body">
     <section>
       <h1 class="title">Add Booking</h1>
       <hr />
       <br />
-      <form action="dashboard.html" method="post" class="form">
+      <form class="form">
         <div class="form-input">
           <label for="service">Choose your need </label>
-          <select name="cars" id="cars" required>
+          <select name="service" id="service" class="select" required>
             <option value="Haircut">Haircut</option>
             <option value="Styling">Styling</option>
             <option value="Hairdryer">Hairdryer</option>
@@ -27,25 +28,132 @@
         <br />
 
         <div class="form-input">
-          <label for="Date">Date</label>
+          <label for="day">Month</label>
+          <select name="month" id="month" class="select" required>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
+          </select>
+        </div>
+        <br />
 
-          <input type="date" id="Date" name="date" required />
+        <div class="form-input">
+          <label for="day">Day</label>
+          <select name="day" id="day" class="select" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">29</option>
+            <option value="30">6</option>
+          </select>
+
+          <!-- <input type="date" id="date" name="date" required /> -->
         </div>
         <br />
 
         <div class="form-input">
           <label for="time">Time</label>
-          <input
+          <!-- <input
             type="time"
-            id="appt"
+            id="time"
             name="time"
             min="09:00"
             max="18:00"
             required
-          />
+          /> -->
+          <select name="time" id="time" class="select" required>
+            <option value="09:00 AM">09:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="03:00 PM">03:00 PM</option>
+            <option value="06:00 PM">06:00 PM</option>
+          </select>
         </div>
-        <input type="submit" type="submit" value="Book Now" class="btn-book" />
+        <div class="btnContainer">
+          <input id="book-now" value="Book Now" class="btn-book" />
+        </div>
       </form>
     </section>
+    <script>
+      $(document).ready(function () {
+        $("#book-now").on("click", function () {
+          console.log("book now clicked");
+          console.log("book now clicked");
+          let email = "email";
+          // if(localStorage.getItem('email')) {
+          //   email = localStorage.getItem('email')
+          // } else {
+          //   email : "email"
+          // }
+          var service = $("#service").val();
+          var day = $("#day").val();
+          var month = $("#month").val();
+          var time = $("#time").val();
+          var status = "status";
+          var name = email;
+          console.log(service + " " + name + " " + time + "" + status);
+
+          if (service != "" && day != "" && time != "") {
+            var postData = {
+              name: name,
+              services: service,
+              day: day,
+              month: month,
+              time: time,
+              status: status,
+            };
+
+            console.log("send request");
+            $.ajax({
+              url: "http://localhost:8080/api/appointment/create.php",
+              type: "POST",
+              data: JSON.stringify(postData),
+              contentType: "application/json; charset=utf-8",
+              success: function (response, xhr) {
+                console.log("response recived" + response);
+                console.log(xhr);
+                var response = response;
+                if (response) {
+                  console.log(response);
+                } else {
+                  alert("Booking failed");
+                }
+              },
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>

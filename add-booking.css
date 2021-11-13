@@ -1,9 +1,9 @@
 .body {
-  justify-content: center;
-  text-align: center;
   margin: 5px auto;
 }
 .title {
+  justify-content: center;
+  text-align: center;
   font-weight: 700;
   font-size: 40px;
 }
@@ -11,16 +11,28 @@
 .form {
   border: 1px solid;
   padding: 40px;
-  margin:70px auto;
+  margin: 70px auto;
   width: 300px;
+  justify-content: space-between;
 }
 .form-input {
   font-size: 18px;
 }
-.form-input label{
-    margin-right: 10px;
-  }
+.form-input label {
+  margin-right: 10px;
+}
 
+.select {
+  margin-left: 20px;
+  justify-content: right;
+  padding: 4px;
+
+}
+
+.btnContainer {
+  text-align: center;
+  justify-content: center;
+}
 .btn-book {
   padding: 15px 25px;
   border: none;
@@ -31,4 +43,5 @@
   cursor: pointer;
   font-weight: 600;
   letter-spacing: 2px;
+  text-align: center;
 }
