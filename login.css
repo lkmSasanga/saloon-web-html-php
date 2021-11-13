@@ -54,4 +54,5 @@ input[type="password"] {
   cursor: pointer;
   font-weight: 600;
   letter-spacing: 2px;
+  text-align: center;
 }
