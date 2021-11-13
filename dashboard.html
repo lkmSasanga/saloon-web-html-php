@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beauty Lab | Dashboard</title>
     <link rel="stylesheet" a href="dashboard.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body class="body">
     <section>
@@ -50,46 +51,22 @@
           />
         </div>
         <br />
+        <p id="demo"></p>
       </form>
     </section>
     <script>
       $(document).ready(function () {
-        $("#book-now").on("click", function () {
-          console.log("book now clicked");
-          var service = $("#service").val();
-          var date = $("#date").val();
-          var time = $("#time").val();
-          console.log(service + " " + date + " " + time);
-
-          if (service != "" && date != "" && time != "") {
-            var postData = {
-              name: "name",
-              services: service,
-              day: date,
-              month: "month",
-              time: time,
-              status: "status",
-            };
-
-            console.log("send request");
-            $.ajax({
-              url: "http://localhost:8080/api/appointment/read.php",
-              type: "POST",
-              data: JSON.stringify(postData),
-              contentType: "application/json; charset=utf-8",
-              success: function (response, xhr) {
-                console.log("response recived" + response);
-                console.log(xhr);
-                var response = response;
-                if (response) {
-                  console.log(response);
-                } else {
-                  alert("Booking failed");
-                }
-              },
-            });
-          }
-        });
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+          document.getElementById("demo").innerHTML = this.responseText;
+        };
+        xhttp.open(
+          "GET",
+          "http://localhost:8080/api/appointment/read.php",
+          true
+        );
+        xhttp.send();
+        console.log("send request");
       });
     </script>
   </body>
