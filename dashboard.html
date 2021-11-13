@@ -13,7 +13,7 @@
       <h1 class="title">Dashboard</h1>
       <hr />
       <br />
-      <form action="" method="post" class="form" id="appointmentContainer"> 
+      <div class="form" id="appointmentContainer">
         <!-- <div class="form-input" id="oneAppointmentCard">
           <label for="service">ID </label>
           <label for="service">Service </label>
@@ -22,12 +22,12 @@
           <input value="Delete" class="btn-delete" id="btn-delete" />
         </div> -->
         <br />
-      </form>
+      </div>
     </section>
     <script>
-      $(document).ready(function () {
-        let appointments = [];
+      let appointments = [];
 
+      $(document).ready(function () {
         window.onload = function () {
           $.ajax({
             url: "http://localhost:8080/api/appointment/read.php",
@@ -39,77 +39,77 @@
             },
           });
         };
-
-        function renderCards() {
-          var appointmentContainer = $("#appointmentContainer");
-
-          appointments.forEach(function (appointment) {
-            let singleAppointment = appointment;
-
-            let row = document.createElement("div");
-            row.classList.add("form-input");
-            row.id = appointment.id;
-
-            let appointmentId = document.createElement("label");
-            appointmentId.innerHTML += appointment.id;
-
-            let service = document.createElement("label");
-            service.innerHTML += appointment.services;
-
-            let month = document.createElement("label");
-            month.innerHTML += appointment.month;
-
-            let day = document.createElement("label");
-            day.innerHTML += appointment.day;
-
-            let time = document.createElement("label");
-            time.innerHTML += appointment.time;
-
-            let deleteBtn = document.createElement("button");
-            deleteBtn.classList.add("btn-delete");
-            deleteBtn.setAttribute("id", "btn-delete");
-            deleteBtn.innerHTML += "Delete";
-            deleteBtn.addEventListener("click", function (e) {
-              console.log("deleteBtn");
-              deleteAppointment(singleAppointment);
-            });
-
-            row.appendChild(appointmentId);
-            row.appendChild(service);
-            row.appendChild(month);
-            row.appendChild(day);
-            row.appendChild(time);
-            row.appendChild(deleteBtn);
-
-            appointmentContainer.append(row);
-          });
-        }
-
-        function deleteAppointment(item) {
-          console.log("delete", item);
-          // var postData = {
-          //   id: appointment.id,
-          // };
-
-          // $.ajax({
-          //   url: "http://localhost:8080/api/appointment/delete.php",
-          //   type: "POST",
-          //   data: JSON.stringify(postData),
-          //   contentType: "application/json; charset=utf-8",
-          //   success: function (response, xhr) {
-          //     console.log("success" + response);
-          //     console.log(xhr);
-          //     var response = response;
-          //     if (response) {
-          //       console.log(response);
-          //     } else {
-          //       alert("appointments getting failed");
-          //     }
-          //   },
-          // });
-          renderCards()
-        }
       });
+
+      function renderCards() {
+        var appointmentContainer = $("#appointmentContainer");
+
+        appointments.forEach(function (appointment) {
+          let singleAppointment = appointment;
+
+          let row = document.createElement("div");
+          row.classList.add("form-input");
+          row.id = appointment.id;
+
+          let appointmentId = document.createElement("label");
+          appointmentId.innerHTML += appointment.id;
+
+          let service = document.createElement("label");
+          service.innerHTML += appointment.services;
+
+          let month = document.createElement("label");
+          month.innerHTML += appointment.month;
+
+          let day = document.createElement("label");
+          day.innerHTML += appointment.day;
+
+          let time = document.createElement("label");
+          time.innerHTML += appointment.time;
+
+          let deleteBtn = document.createElement("button");
+          deleteBtn.classList.add("btn-delete");
+          // deleteBtn.setAttribute("id", "btn-delete");
+          deleteBtn.innerHTML += "Delete";
+          deleteBtn.addEventListener("click", function (e) {
+            console.log("deleteBtn");
+            deleteAppointment(singleAppointment);
+          });
+
+          row.appendChild(appointmentId);
+          row.appendChild(service);
+          row.appendChild(month);
+          row.appendChild(day);
+          row.appendChild(time);
+          row.appendChild(deleteBtn);
+
+          appointmentContainer.append(row);
+        });
+      }
+
+      function deleteAppointment(item) {
+        console.log("delete", item);
+        var postData = {
+          id: item.id,
+        };
+
+        $.ajax({
+          url: "http://localhost:8080/api/appointment/delete.php",
+          type: "POST",
+          data: JSON.stringify(postData),
+          contentType: "application/json; charset=utf-8",
+          success: function (response, xhr) {
+            console.log("success" + response);
+            console.log(xhr);
+            var response = response;
+            if (response) {
+              console.log(response);
+            } else {
+              alert("appointments getting failed");
+            }
+          },
+        });
+        // renderCards();
+      }
     </script>
   </body>
 </html>
