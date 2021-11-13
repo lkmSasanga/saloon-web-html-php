@@ -64,7 +64,7 @@
             row.classList.add("inventoryRow");
 
             let incbutton = document.createElement("button");
-            incbutton.classList.add("incdecbutton");
+            incbutton.classList.add("incbutton");
             incbutton.innerHTML += "+";
             incbutton.addEventListener("click", function (e) {
               console.log("incbutton");
@@ -75,7 +75,7 @@
             count.innerHTML += item.count;
 
             let decbutton = document.createElement("button");
-            decbutton.classList.add("incdecbutton");
+            decbutton.classList.add("decbutton");
             decbutton.innerHTML += "-";
             decbutton.addEventListener("click", function (e) {
               console.log("decbutton");
