@@ -1,0 +1,91 @@
+//Open cmd
+
+//login to mysql
+mysql -u root -p
+
+//Create salonapidb
+CREATE DATABASE salonapidb;
+
+//Show all databases
+SHOW DATABASES;
+
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| salonapidb         |
+| sys                |
++--------------------+
+
+//Select salonapidb
+use salonapidb;
+
+
+//Create Client table
+CREATE TABLE IF NOT EXISTS `Client` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `email` varchar(50),
+  `password` varchar(50),
+  `role` varchar(50),
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19;
+
+//Create Appointment table
+CREATE TABLE IF NOT EXISTS `Appointment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `services` varchar(50),
+  `day` varchar(50),
+  `month` varchar(50),
+  `time` varchar(50),
+  `status` varchar(50),
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19;
+
+
+//Create Inventory table
+CREATE TABLE IF NOT EXISTS `Inventory` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(256) NOT NULL,
+  `count` int(11),
+  `created` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+)ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19;
+
+//Show all tables in salonapidb
+SHOW tables;
+
++--------------------+
+|Tables_in_salonapidb |
++--------------------+
+| Client
+  Appointment
+  Inventory           |
++--------------------+
+
+//Add admin (Required)
+INSERT INTO `Client` (`id`, `name`, `email`, `password`, `role`, `created`) VALUES 
+(1, 'Admin', 'admin@gmail.com','111111', 'Admin', '2012-06-01 02:12:30');
+
+//Populate Client table (Optional)
+INSERT INTO `Client` (`id`, `name`, `email`, `password`, `role`, `created`) VALUES 
+(11, 'John Doe', 'johndoe@gmail.com', '111111', 'Client', '2012-06-01 02:12:30'),
+(2, 'David Costa', 'sam.mraz1996@yahoo.com','111111', 'Client', '2013-03-03 01:20:10'),
+(3, 'Todd Martell', 'liliane_hirt@gmail.com','111111', 'Client', '2014-09-20 03:10:25');
+
+//Add Inventory items (Required)
+INSERT INTO `Inventory` (`id`, `name`, `count`, `created`) VALUES 
+(1, 'Cissor', 10, '2012-06-01 02:12:30'),
+(2, 'Brush', 12, '2013-03-03 01:20:10'),
+(3, 'Shampoo', 11, '2014-09-20 03:10:25'),
+(4, 'Dryer', 23, '2015-04-11 04:11:12');
+
+//Add dummy Appointments (Optional)
+INSERT INTO `Appointment` (`id`, `name`, `services`, `day`, `month`, `time`, `status`,`created`) VALUES 
+(1, 'James Steve', 'Haircut', 'Monday', 'July', '10PM', 'True', '2012-06-01 02:12:30');
+
