@@ -52,16 +52,19 @@
       $(document).ready(function () {
         $("#book-now").on("click", function () {
           console.log("book now clicked");
-          var services = $("#service").val();
+          var service = $("#service").val();
           var date = $("#date").val();
           var time = $("#time").val();
           console.log(service + " " + date + " " + time);
 
           if (service != "" && date != "" && time != "") {
             var postData = {
-              service: service,
-              date: date,
+              name: "name",
+              services: service,
+              day: date,
+              month: "month",
               time: time,
+              status: "status",
             };
 
             console.log("send request");
