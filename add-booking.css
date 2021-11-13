@@ -1,47 +1,35 @@
 .body {
-    justify-content: center;
-    text-align: center;
-    margin: 5px auto;
-  }
-  .title {
-    font-weight: 700;
-    font-size: 40px;
-  }
-  
+  justify-content: center;
+  text-align: center;
+  margin: 5px auto;
+}
+.title {
+  font-weight: 700;
+  font-size: 40px;
+}
 
-  input[type="text"],
-  input[type="password"] {
-    margin-top: 30px;
-    height: 45px;
-    width: 300px;
-    font-size: 18px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding-left: 40px;
-    border-radius: 7px;
+.form {
+  align-items: left !important;
+  border: 1px solid;
+  padding: 40px;
+  margin:70px 350px;
+}
+.form-input {
+  align-items: left !important;
+  font-size: 18px;
+}
+.form-input label{
+    margin-right: 10px;
   }
-  
-  .form-input::before {
-    padding-left: 07px;
-    padding-top: 40px;
-    position: absolute;
-    font-size: 35px;
-    color: #2980b9;
-  }
-  
-  /* .form-input:nth-child(2)::before{
-  } */
-  
-  .btn-login {
-    padding: 25px 25px;
-    border: none;
-    background-color: #00ae48;
-    color: #fff;
-    border-radius: 10px;
-    width: 150px;
-    margin-top: 40px;
-    cursor: pointer;
-    font-weight: 600;
-    letter-spacing: 2px;
-  }
-  
+
+.btn-book {
+  padding: 15px 25px;
+  border: none;
+  background-color: #00ae48;
+  color: #fff;
+  width: 150px;
+  margin-top: 40px;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
