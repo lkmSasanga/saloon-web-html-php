@@ -17,10 +17,10 @@
     </section>
 
     <script>
-      $(document).ready(function () {
-        let inventoryItems = [];
+      let inventoryItems = [];
 
-        window.onload = function () {
+      $(document).ready(function () {
+        window.onload = function (e) {
           $.ajax({
             url: "http://localhost:8080/api/inventory/read.php",
             method: "GET",
@@ -31,11 +31,30 @@
             },
           });
         };
+      });
 
-        function renderCards() {
-          var inventory = $("#inventory");
+      function reloadItems() {
+        $.ajax({
+          url: "http://localhost:8080/api/inventory/read.php",
+          method: "GET",
+          success: function (data) {
+            console.log(data.body);
+            inventoryItems = data.body;
+            var inventory = $("#inventory");
 
+            inventory.empty();
+            renderCards();
+          },
+        });
+      }
+
+      function renderCards() {
+        var inventory = $("#inventory");
+
+        if (inventoryItems) {
           inventoryItems.forEach(function (inventoryItem) {
+            let item = inventoryItem;
+
             let inventoryItemCard = document.createElement("div");
             inventoryItemCard.id = inventoryItem.id;
             inventoryItemCard.innerHTML += inventoryItem.name;
@@ -47,15 +66,21 @@
             let incbutton = document.createElement("button");
             incbutton.classList.add("incdecbutton");
             incbutton.innerHTML += "+";
-            incbutton.addEventListener("click", increment(inventoryItem.id));
+            incbutton.addEventListener("click", function (e) {
+              console.log("incbutton");
+              increment(item);
+            });
 
             let count = document.createElement("div");
-            count.innerHTML += inventoryItem.count;
+            count.innerHTML += item.count;
 
             let decbutton = document.createElement("button");
             decbutton.classList.add("incdecbutton");
             decbutton.innerHTML += "-";
-            // decbutton.addEventListener("click", decrement(inventoryItem.id));
+            decbutton.addEventListener("click", function (e) {
+              console.log("decbutton");
+              decrement(item);
+            });
 
             row.appendChild(incbutton);
             row.appendChild(count);
@@ -66,9 +91,35 @@
             inventory.append(inventoryItemCard);
           });
         }
+      }
 
-        function increment(inventoryItemId) {}
-      });
+      function updateItem(inventoryItem) {
+        $.ajax({
+          url: "http://localhost:8080/api/inventory/update.php",
+          method: "POST",
+          data: JSON.stringify(inventoryItem),
+          contentType: "application/json; charset=utf-8",
+          success: function (data) {
+            console.log(data.body);
+            inventoryItems = data.body;
+            renderCards();
+          },
+        });
+      }
+
+      function increment(inventoryItem) {
+        inventoryItem.count++;
+        console.log("Increment");
+        updateItem(inventoryItem);
+        reloadItems();
+      }
+
+      function decrement(inventoryItem) {
+        inventoryItem.count--;
+        console.log("Decrement");
+        updateItem(inventoryItem);
+        reloadItems();
+      }
     </script>
   </body>
 </html>
