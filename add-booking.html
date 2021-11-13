@@ -13,7 +13,7 @@
       <h1 class="title">Add Booking</h1>
       <hr />
       <br />
-      <form action="dashboard.html" method="post" class="form">
+      <form class="form">
         <div class="form-input">
           <label for="service">Choose your need </label>
           <select name="service" id="service" required>
@@ -85,41 +85,51 @@
 
         <div class="form-input">
           <label for="time">Time</label>
-          <input
+          <!-- <input
             type="time"
             id="time"
             name="time"
             min="09:00"
             max="18:00"
             required
-          />
+          /> -->
+          <select name="time" id="time" required>
+            <option value="09:00 AM">09:00 AM</option>
+            <option value="12:00 PM">12:00 PM</option>
+            <option value="03:00 PM">03:00 PM</option>
+            <option value="06:00 PM">06:00 PM</option>
+          </select>
         </div>
-        <input
-          type="submit"
-          type="submit"
-          id="book-now"
-          value="Book Now"
-          class="btn-book"
-        />
+        <input id="book-now" value="Book Now" class="btn-book" />
       </form>
     </section>
     <script>
       $(document).ready(function () {
         $("#book-now").on("click", function () {
           console.log("book now clicked");
+          console.log("book now clicked");
+          let email = "email"
+          // if(localStorage.getItem('email')) {
+          //   email = localStorage.getItem('email')
+          // } else {
+          //   email : "email"
+          // }
           var service = $("#service").val();
-          var date = $("#date").val();
+          var day = $("#day").val();
+          var month = $("#month").val();
           var time = $("#time").val();
-          console.log(service + " " + date + " " + time);
+          var status = "status";
+          var name = email;
+          console.log(service + " " + name + " " + time + "" + status);
 
-          if (service != "" && date != "" && time != "") {
+          if (service != "" && day != "" && time != "") {
             var postData = {
-              name: "name",
+              name: name,
               services: service,
-              day: date,
-              month: "month",
+              day: day,
+              month: month,
               time: time,
-              status: "status",
+              status: status,
             };
 
             console.log("send request");
