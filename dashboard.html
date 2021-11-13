@@ -13,7 +13,7 @@
       <h1 class="title">Dashboard</h1>
       <hr />
       <br />
-      <form action="" method="post" class="form">
+      <form action="" method="post" class="form" id="appointmentContainer">
         <!-- <div class="form-input">
           <label for="service">ID </label>
           <label for="service">Service </label>
@@ -28,7 +28,7 @@
           <label for="service">Time </label>
           <input value="Delete" class="btn-delete" id="btn-delete" />
         </div> -->
-        <div class="form-input">
+        <div class="form-input" id="oneAppointmentCard">
           <label for="service">ID </label>
           <label for="service">Service </label>
           <label for="service">Date </label>
@@ -41,55 +41,118 @@
     </section>
     <script>
       $(document).ready(function () {
-        const xhttp = new XMLHttpRequest();
-        xhttp.onload = function () {
-          document.getElementById("demo").innerHTML = this.responseText;
-        };
-        xhttp.open(
-          "GET",
-          "http://localhost:8080/api/appointment/read.php",
-          true
-        );
-        xhttp.send();
-        console.log("send request");
-      });
+        let appointments = [];
 
-      $("#btn-delete").on("click", function () {
-        console.log("delete");
-        var postData = {
-          id: 26,
+        window.onload = function () {
+          $.ajax({
+            url: "http://localhost:8080/api/appointment/read.php",
+            method: "GET",
+            success: function (data) {
+              console.log(data.body);
+              appointments = data.body;
+              renderCards();
+            },
+          });
         };
 
-        $.ajax({
-          url: "http://localhost:8080/api/appointment/delete.php",
-          type: "POST",
-          data: JSON.stringify(postData),
-          contentType: "application/json; charset=utf-8",
-          success: function (response, xhr) {
-            console.log("success" + response);
-            console.log(xhr);
-            var response = response;
-            if (response) {
-              console.log(response);
-            } else {
-              alert("appointments getting failed");
-            }
-          },
+        function renderCards() {
+          var appointmentContainer = $("#appointmentContainer");
+
+          appointments.forEach(function (appointment) {
+            // let oneAppointmentCard = document.createElement("div");
+            // oneAppointmentCard.id = appointment.id;
+            // inventoryItemCard.innerHTML += appointmentItem.name;
+
+            let row = document.createElement("div");
+            row.classList.add("form-input");
+            row.id = appointment.id
+
+            let appointmentId = document.createElement("label");
+            appointmentId.innerHTML += appointment.id
+
+            let service = document.createElement("label");
+            service.innerHTML += appointment.services
+
+            let month = document.createElement("label");
+            month.innerHTML += appointment.month
+
+            let day = document.createElement("label");
+            day.innerHTML += appointment.day
+
+            let time = document.createElement("label");
+            time.innerHTML += appointment.time
+
+            let deleteBtn = document.createElement("button");
+            deleteBtn.classList.add("btn-delete");
+            deleteBtn.setAttribute("id", "btn-delete")
+            deleteBtn.innerHTML += "Delete";
+
+
+
+            // row.classList.add("inventoryRow");
+
+            // let incbutton = document.createElement("button");
+            // incbutton.classList.add("incdecbutton");
+            // incbutton.innerHTML += "+";
+            // incbutton.addEventListener("click", increment(inventoryItem.id));
+
+            // let count = document.createElement("div");
+            // count.innerHTML += inventoryItem.count;
+
+            // let decbutton = document.createElement("button");
+            // decbutton.classList.add("incdecbutton");
+            // decbutton.innerHTML += "-";
+
+            row.appendChild(appointmentId);
+            row.appendChild(service);
+            row.appendChild(month);
+            row.appendChild(day);
+            row.appendChild(time);
+            row.appendChild(deleteBtn);
+
+            // inventoryItemCard.appendChild(row);
+
+            appointmentContainer.append(row);
+          });
+        }
+
+        $("#btn-delete").on("click", function () {
+          console.log("delete");
+          var postData = {
+            id: 35,
+          };
+
+          $.ajax({
+            url: "http://localhost:8080/api/appointment/delete.php",
+            type: "POST",
+            data: JSON.stringify(postData),
+            contentType: "application/json; charset=utf-8",
+            success: function (response, xhr) {
+              console.log("success" + response);
+              console.log(xhr);
+              var response = response;
+              if (response) {
+                console.log(response);
+              } else {
+                alert("appointments getting failed");
+              }
+            },
+          });
+
+          // $.ajax({
+          //   url: "http://localhost:8080/api/appointment/delete.php",
+          //   type: "DELETE",
+          //   data: { movie: movie }, //<-----this should be an object.
+          //   contentType: "application/json", // <---add this
+          //   dataType: "text", // <---update this
+          //   success: function (result) {
+          //     console.log("success", result);
+          //   },
+          //   error: function (result) {
+          //     console.log("error", result);
+          //   },
+          // });
         });
-
-        // $.ajax({
-        //   url: "http://localhost:8080/api/appointment/delete.php",
-        //   type: "DELETE",
-        //   data: { movie: movie }, //<-----this should be an object.
-        //   contentType: "application/json", // <---add this
-        //   dataType: "text", // <---update this
-        //   success: function (result) {
-        //     console.log("success", result);
-        //   },
-        //   error: function (result) {
-        //     console.log("error", result);
-        //   },
-        // });
       });
     </script>
   </body>
