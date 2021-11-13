@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beauty Lab | Home</title>
+    <link rel="stylesheet" a href="add-booking.css" />
+  </head>
+  <body class="body">
+    <section>
+      <h1 class="title">Add a Booking</h1>
+      <hr />
+      <br />
+      <form action="home.html" method="post">
+        <div class="form-input">
+          <label for="service">Choose your need </label>
+          <select name="cars" id="cars">
+            <option value="Haircut">Haircut</option>
+            <option value="Styling">Styling</option>
+            <option value="Hairdryer">Hairdryer</option>
+            <option value="Coloring">Coloring</option>
+            <option value="Shampoo">Shampoo</option>
+            <option value="Shaving">Shaving</option>
+          </select>
+          <br /><br />
+        </div>
+        <div class="form-input">
+          <label for="Date">Date</label>
+          <input type="date" id="Date" name="date" />
+        </div>
+
+        <div class="form-input">
+          <label for="time">Time</label>
+          <input
+            type="time"
+            id="appt"
+            name="time"
+            min="09:00"
+            max="18:00"
+            required
+          />
+        </div>
+        <input type="submit" type="submit" value="Book Now" class="btn-login" />
+      </form>
+    </section>
+  </body>
+</html>
