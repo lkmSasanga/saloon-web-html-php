@@ -19,36 +19,21 @@
           <label for="service">Service </label>
           <label for="service">Date </label>
           <label for="service">Time </label>
-          <input
-            type="submit"
-            type="submit"
-            value="Delete"
-            class="btn-delete"
-          />
+          <input value="Delete" class="btn-delete" id="btn-delete" />
         </div>
         <div class="form-input">
           <label for="service">ID </label>
           <label for="service">Service </label>
           <label for="service">Date </label>
           <label for="service">Time </label>
-          <input
-            type="submit"
-            type="submit"
-            value="Delete"
-            class="btn-delete"
-          />
+          <input value="Delete" class="btn-delete" id="btn-delete" />
         </div>
         <div class="form-input">
           <label for="service">ID </label>
           <label for="service">Service </label>
           <label for="service">Date </label>
           <label for="service">Time </label>
-          <input
-            type="submit"
-            type="submit"
-            value="Delete"
-            class="btn-delete"
-          />
+          <input value="Delete" class="btn-delete" id="btn-delete" />
         </div>
         <br />
         <p id="demo"></p>
@@ -67,6 +52,42 @@
         );
         xhttp.send();
         console.log("send request");
+      });
+
+      $("#btn-delete").on("click", function () {
+        console.log("sign up");
+        var email = $("#email").val();
+        var password = $("#password").val();
+        var name = $("#name").val();
+        localStorage.setItem("email", email);
+        console.log(email + " " + password + " " + name);
+
+        if (email != "" && password != "" && name != "") {
+          var postData = {
+            name: name,
+            password: password,
+            email: email,
+            role: "client",
+          };
+
+          console.log("send request");
+          $.ajax({
+            url: "http://localhost:8080/api/client/create.php",
+            type: "POST",
+            data: JSON.stringify(postData),
+            contentType: "application/json; charset=utf-8",
+            success: function (response, xhr) {
+              console.log("response recived" + response);
+              console.log(xhr);
+              var response = response;
+              if (response) {
+                console.log(response);
+              } else {
+                alert("Sign up failed");
+              }
+            },
+          });
+        }
       });
     </script>
   </body>
