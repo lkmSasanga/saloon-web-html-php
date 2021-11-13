@@ -1,0 +1,43 @@
+.body {
+    justify-content: center;
+    text-align: center;
+    margin: 5px auto;
+  }
+  .title {
+    font-weight: 700;
+    font-size: 40px;
+  }
+  
+  .form {
+      margin-top: 60px;
+  }
+  .form-input {
+    border: 1px solid;
+    padding: 40px;
+    margin:20px auto;
+    width: 700px;
+    /* align-items: left !important; */
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+  }
+  .form-input label{
+      margin-right: 50px;
+    }
+  
+  .btn-delete {
+    padding: 10px 25px;
+    border: none;
+    background-color: #dc0841;
+    color: #fff;
+    width: 150px;
+    margin-top: -10px;
+    margin-bottom: -10px;
+    margin-left: 40px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 2px;
+  }
+  
