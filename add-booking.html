@@ -30,7 +30,7 @@
         <div class="form-input">
           <label for="Date">Date</label>
 
-          <input type="date" id="Date" name="date" required />
+          <input type="date" id="date" name="date" required />
         </div>
         <br />
 
@@ -38,15 +38,52 @@
           <label for="time">Time</label>
           <input
             type="time"
-            id="appt"
+            id="time"
             name="time"
             min="09:00"
             max="18:00"
             required
           />
         </div>
-        <input type="submit" type="submit" value="Book Now" class="btn-book" />
+        <input type="submit" type="submit"  id="book-now" value="Book Now" class="btn-book" />
       </form>
     </section>
+    <script>
+      $(document).ready(function () {
+        $("#book-now").on("click", function () {
+          console.log("book now clicked");
+          var services = $("#service").val();
+          var date = $("#date").val();
+          var time = $("#time").val();
+          console.log(service + " " + date + " " + time);
+
+          if (service != "" && date != "" && time != "") {
+            var postData = {
+              service: service,
+              date: date,
+              time: time,
+            };
+
+            console.log("send request");
+            $.ajax({
+              url: "http://localhost:8080/api/appointment/create.php",
+              type: "POST",
+              data: JSON.stringify(postData),
+              contentType: "application/json; charset=utf-8",
+              success: function (response, xhr) {
+                console.log("response recived" + response);
+                console.log(xhr);
+                var response = response;
+                if (response) {
+                  console.log(response);
+                } else {
+                  alert("Booking failed");
+                }
+              },
+            });
+          }
+        });
+      });
+    </script>
   </body>
 </html>
