@@ -59,10 +59,7 @@
           var appointmentContainer = $("#appointmentContainer");
 
           appointments.forEach(function (appointment) {
-            // let oneAppointmentCard = document.createElement("div");
-            // oneAppointmentCard.id = appointment.id;
-            // inventoryItemCard.innerHTML += appointmentItem.name;
-
+        
             let row = document.createElement("div");
             row.classList.add("form-input");
             row.id = appointment.id
@@ -87,30 +84,12 @@
             deleteBtn.setAttribute("id", "btn-delete")
             deleteBtn.innerHTML += "Delete";
 
-
-
-            // row.classList.add("inventoryRow");
-
-            // let incbutton = document.createElement("button");
-            // incbutton.classList.add("incdecbutton");
-            // incbutton.innerHTML += "+";
-            // incbutton.addEventListener("click", increment(inventoryItem.id));
-
-            // let count = document.createElement("div");
-            // count.innerHTML += inventoryItem.count;
-
-            // let decbutton = document.createElement("button");
-            // decbutton.classList.add("incdecbutton");
-            // decbutton.innerHTML += "-";
-
             row.appendChild(appointmentId);
             row.appendChild(service);
             row.appendChild(month);
             row.appendChild(day);
             row.appendChild(time);
             row.appendChild(deleteBtn);
-
-            // inventoryItemCard.appendChild(row);
 
             appointmentContainer.append(row);
           });
