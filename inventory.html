@@ -6,26 +6,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beauty Lab | Inventory</title>
     <link rel="stylesheet" a href="inventory.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
   <body class="body">
     <section>
       <h1 class="title">Inventory</h1>
       <hr />
       <br />
-      <form action="" method="post" class="form">
-        <div class="form-input">
-          <label class="item-name" for="service">Cissor </label>
-
-          <input type="submit" type="submit" value="-" class="btn-dec" />
-          <label for="count">12 </label>
-
-          <input type="submit" type="submit" value="+" class="btn-inc" />
-        </div>
-
-   
-        </div>
-        <br />
-      </form>
+      <div class="inventory" id="inventory"></div>
     </section>
+
+    <script>
+      $(document).ready(function () {
+        let inventoryItems = [];
+
+        window.onload = function () {
+          $.ajax({
+            url: "http://localhost:8080/api/inventory/read.php",
+            method: "GET",
+            success: function (data) {
+              console.log(data.body);
+              inventoryItems = data.body;
+              renderCards();
+            },
+          });
+        };
+
+        function renderCards() {
+          var inventory = $("#inventory");
+
+          inventoryItems.forEach(function (inventoryItem) {
+            let inventoryItemCard = document.createElement("div");
+            inventoryItemCard.id = inventoryItem.id;
+            inventoryItemCard.innerHTML += inventoryItem.name;
+            inventoryItemCard.classList.add("inventoryCard");
+
+            let row = document.createElement("div");
+            row.classList.add("inventoryRow");
+
+            let incbutton = document.createElement("button");
+            incbutton.classList.add("incdecbutton");
+            incbutton.innerHTML += "+";
+            incbutton.addEventListener("click", increment(inventoryItem.id));
+
+            let count = document.createElement("div");
+            count.innerHTML += inventoryItem.count;
+
+            let decbutton = document.createElement("button");
+            decbutton.classList.add("incdecbutton");
+            decbutton.innerHTML += "-";
+            // decbutton.addEventListener("click", decrement(inventoryItem.id));
+
+            row.appendChild(incbutton);
+            row.appendChild(count);
+            row.appendChild(decbutton);
+
+            inventoryItemCard.appendChild(row);
+
+            inventory.append(inventoryItemCard);
+          });
+        }
+
+        function increment(inventoryItemId) {}
+      });
+    </script>
   </body>
 </html>
