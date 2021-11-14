@@ -10,8 +10,8 @@
   <body class="body">
     <section>
       <h1 class="title">Services</h1>
-    <hr>
-    <br>
+      <hr />
+      <br />
       <!-- <ul class="servicesList">
         <li>Haircut</li>
         <li>Styling</li>
@@ -24,7 +24,15 @@
         <a href="/add-booking.html">Add a booking</a>
         <a href="/dashboard.html">Dashboard</a>
         <a href="/inventory.html">Inventory</a>
+
+        <div id="welcome"></div>
       </div>
     </section>
+
+    <script>
+      var userdata = JSON.parse(localStorage.getItem("userdata"));
+      document.getElementById("welcome").innerHTML = "Welcome " + userdata.name;
+      console.log(JSON.parse(localStorage.getItem("userdata")));
+    </script>
   </body>
 </html>

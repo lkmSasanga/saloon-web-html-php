@@ -36,7 +36,7 @@
           console.log("login");
           var email = $("#email").val();
           var password = $("#password").val();
-          localStorage.setItem('email', email);
+          localStorage.setItem("email", email);
           console.log(email + " " + password);
 
           if (email != "" && password != "") {
@@ -54,6 +54,14 @@
                 var response = response;
                 if (response) {
                   console.log(response);
+
+                  localStorage.setItem("userdata", JSON.stringify(response));
+                  console.log(localStorage.getItem("userdata"));
+                  if (response.role == "Admin") {
+                    location.href = "/inventory.html";
+                  } else {
+                    location.href = "/home.html";
+                  }
                 } else {
                   alert("Login failed");
                 }
