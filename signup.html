@@ -8,8 +8,10 @@
   <body>
     <div class="container">
       <br />
+      <!-- Form header -->
       <h1 class="login">Sign Up</h1>
       <form>
+        <!-- user name input -->
         <div class="form-input">
           <input
             type="text"
@@ -18,6 +20,7 @@
             placeholder="Enter the Name"
           />
         </div>
+        <!-- user email input -->
         <div class="form-input">
           <input
             type="text"
@@ -26,6 +29,7 @@
             placeholder="Enter the Email address"
           />
         </div>
+        <!-- user password input -->
         <div class="form-input">
           <input
             type="password"
@@ -34,6 +38,7 @@
             id="password"
           />
         </div>
+        <!-- sign in button -->
         <input value="SIGN UP" class="btn-login" id="btn-signup" />
       </form>
     </div>
@@ -45,7 +50,7 @@
           var email = $("#email").val();
           var password = $("#password").val();
           var name = $("#name").val();
-          localStorage.setItem('email', email);
+          localStorage.setItem("email", email);
           console.log(email + " " + password + " " + name);
 
           if (email != "" && password != "" && name != "") {
