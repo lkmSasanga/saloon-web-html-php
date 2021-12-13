@@ -9,22 +9,28 @@
   </head>
   <body class="body">
     <section>
+      <div style="display: inline">
+        <a href="/inventory.html">Inventory</a>
+        <a href="/home.html">Home</a>
+        <a href="/login.html">log in</a>
+        <a href="/signup.html">Sign Up</a>
+      </div>
       <h1 class="title">Services</h1>
-    <hr>
-    <br>
-      <!-- <ul class="servicesList">
-        <li>Haircut</li>
-        <li>Styling</li>
-        <li>Hairdryer</li>
-        <li>Coloring</li>
-        <li>Shampoo</li>
-        <li>Shaving</li>
-      </ul> -->
+      <hr />
+      <br />
       <div class="categories">
         <a href="/add-booking.html">Add a booking</a>
         <a href="/dashboard.html">Dashboard</a>
         <a href="/inventory.html">Inventory</a>
+
+        <div id="welcome"></div>
       </div>
     </section>
+
+    <script>
+      var userdata = JSON.parse(localStorage.getItem("userdata"));
+      document.getElementById("welcome").innerHTML = "Welcome " + userdata.name;
+      console.log(JSON.parse(localStorage.getItem("userdata")));
+    </script>
   </body>
 </html>
